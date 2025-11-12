@@ -1,0 +1,191 @@
+=========================================================
+            GUÍA COMPLETA DE GIT Y GITHUB
+=========================================================
+
+1️⃣ CREAR UN NUEVO PROYECTO
+
+# Crear la carpeta del proyecto y moverse a ella
+mkdir ~/Desktop/mi-nuevo-proyecto
+cd ~/Desktop/mi-nuevo-proyecto
+
+# Esta será tu carpeta de trabajo. Todo lo que hagas con Git estará dentro de ella.
+
+---------------------------------------------------------
+2️⃣ INICIALIZAR GIT
+
+git init
+
+# Crea la carpeta oculta .git que rastrea cambios
+# A partir de ahora Git puede registrar commits
+
+---------------------------------------------------------
+3️⃣ CREAR ARCHIVOS Y .gitignore
+
+# Crear archivo de proyecto
+touch main.py
+
+# Crear archivo .gitignore
+touch .gitignore
+
+# Contenido básico de .gitignore (Python + VS Code)
+echo "__pycache__/
+*.pyc
+*.pyo
+.env
+.vscode/
+.DS_Store" > .gitignore
+
+# Evita subir archivos temporales, configuraciones locales o compilaciones al repositorio remoto
+
+---------------------------------------------------------
+4️⃣ AÑADIR ARCHIVOS AL STAGING AREA
+
+git add .
+
+# El '.' indica todos los archivos nuevos o modificados
+# Para añadir archivos individuales:
+git add main.py
+
+---------------------------------------------------------
+5️⃣ HACER EL PRIMER COMMIT
+
+git commit -m "Primer commit: creación del proyecto"
+
+# Mensaje descriptivo y claro
+# Guarda los cambios localmente
+
+---------------------------------------------------------
+6️⃣ CREAR REPOSITORIO REMOTO EN GITHUB
+
+# 1. Ir a GitHub → New Repository
+# 2. Nombre del repo igual que tu proyecto
+# 3. No agregar README, .gitignore ni licencia (ya los tienes localmente)
+# 4. Copiar la URL HTTPS del repositorio:
+https://github.com/DanielMobe/mi-nuevo-proyecto.git
+
+---------------------------------------------------------
+7️⃣ CONECTAR REPO LOCAL CON GITHUB
+
+git remote add origin https://github.com/DanielMobe/mi-nuevo-proyecto.git
+git remote -v  # Verificar la conexión
+
+---------------------------------------------------------
+8️⃣ RENOMBRAR LA RAMA PRINCIPAL A 'main'
+
+git branch -M main
+
+---------------------------------------------------------
+9️⃣ SUBIR EL COMMIT INICIAL A GITHUB
+
+git push -u origin main
+
+# -u establece seguimiento entre rama local y remota
+# Después, solo necesitas git push para futuros cambios
+
+---------------------------------------------------------
+🔹 RUTINA DIARIA PARA CAMBIOS POSTERIORES
+
+# 1. Ver archivos modificados o nuevos
+git status
+
+# 2. Añadir cambios al staging
+git add .
+
+# 3. Crear commit con mensaje descriptivo
+git commit -m "Descripción del cambio"
+
+# 4. Subir a GitHub
+git push
+
+---------------------------------------------------------
+🔹 AGREGAR NUEVOS ARCHIVOS
+
+# Crear nuevo archivo
+touch funciones.py  # o crear directamente en VS Code
+
+# Ver estado de Git
+git status
+
+# Añadir archivo nuevo
+git add funciones.py
+# o todos los archivos nuevos/modificados
+git add .
+
+# Hacer commit
+git commit -m "Agrego archivo funciones.py con utilidades"
+
+# Subir cambios a GitHub
+git push
+
+---------------------------------------------------------
+🔹 ELIMINAR ARCHIVOS DEL PROYECTO Y GITHUB
+
+# Eliminar archivo del disco y del repo
+git rm archivo_innecesario.py
+
+# Solo eliminar del repo pero conservar en disco
+git rm --cached archivo_innecesario.py
+
+# Hacer commit de la eliminación
+git commit -m "Elimino archivo_innecesario.py del repositorio"
+
+# Subir cambios a GitHub
+git push
+
+---------------------------------------------------------
+🔹 REVISAR HISTORIAL Y ESTADO
+
+git log             # Historial completo de commits
+git log --oneline   # Historial resumido
+git status          # Archivos modificados o sin añadir
+git branch          # Ramas locales
+git branch -r       # Ramas remotas
+git branch -a       # Todas las ramas
+
+---------------------------------------------------------
+🔹 TRABAJAR CON RAMAS
+
+# Crear y cambiar a nueva rama
+git checkout -b feature/nueva-funcion
+
+# Hacer cambios y commit en la rama
+git add .
+git commit -m "Agrego nueva función"
+
+# Volver a la rama principal y fusionar
+git checkout main
+git merge feature/nueva-funcion
+
+---------------------------------------------------------
+🔹 ACTUALIZAR REPOSITORIO LOCAL CON CAMBIOS REMOTOS
+
+git pull origin main
+
+# Trae los cambios de GitHub y los combina con tu copia local
+
+---------------------------------------------------------
+🔹 BORRAR ARCHIVOS O CAMBIOS
+
+# Quitar un archivo del staging area
+git reset nombre_archivo
+
+# Descartar cambios en un archivo
+git checkout -- nombre_archivo
+
+# Borrar archivo del repositorio y del disco
+git rm archivo.txt
+git commit -m "Borro archivo innecesario"
+git push
+
+---------------------------------------------------------
+🔹 BUENAS PRÁCTICAS
+
+- Usar siempre .gitignore
+- Mensajes de commit claros y frecuentes
+- Hacer commits pequeños y constantes
+- Usar ramas para nuevas funciones o experimentos
+- Hacer git pull antes de trabajar si hay más colaboradores
+
+=========================================================
+FIN DE LA GUÍA
+=========================================================
